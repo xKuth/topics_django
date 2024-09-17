@@ -1,0 +1,56 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+body{
+    background-color: black;
+}
+.navbar.navbar-default.navbar-static-top{
+    color: white;
+    background-color: black;
+    
+}
+i{
+    margin-right: 2px;
+    margin-left: 5px;
+}
+#back{
+    background-color: #25272d;
+}
+
+.switch{
+    color: azure;
+}
+div.panel-heading.color, div.color{
+    background-color: rgba(245, 222, 179, 0.658);
+}
+div.btnt{
+    display: inline;
+    float: right;
+    margin-right: 5%;
+}
+
+@media (max-width: 768px) {
+    div.navbar-header{
+        display: flex;
+        flex-direction: row;
+        float: left;
+        padding-right: 3%;
+    }
+    ul.nav.navbar-nav li > a{
+        display: flex;
+        flex-direction: row;
+    }
+    .nav.navbar-nav.space{
+        display: flex;
+        float: left;
+        margin-top: 5px;
+    }
+    .nav.navbar-nav.navbar-right{
+        padding-right: 5%;
+        margin-bottom: 0px;
+        margin-top: 1px;
+    }
+    .nav.navbar-nav.navbar-right li{
+        display: flex;
+        float: right;
+        flex-direction: row-reverse;
+    }
+}
