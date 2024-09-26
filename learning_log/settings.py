@@ -2,25 +2,20 @@ from pathlib import Path
 import os
 import dj_database_url
 import environ
+import django.contrib
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 env = environ.Env()
-
 environ.Env.read_env()
-
-# SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'True'
-
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
-
 
 # Application definition
 
@@ -39,8 +34,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -83,7 +78,6 @@ DATABASES = {
 database_url = os.environ.get("DATABASE_URL")
 DATABASES["default"] = dj_database_url.parse(database_url)
 
-
 # Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -115,13 +109,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "static/"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'learning_logs/static')
+    os.path.join(BASE_DIR, 'static')
 ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_STORAGE = "whitenoise.storage.compressedManifeStstatiFilesStorage"
+
 
 # Default primary key field type
 
@@ -134,5 +128,6 @@ LOGIN_URL = 'users/login'
 BOOTSTRAP3 = {
     'include_jquery': True
 }
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 

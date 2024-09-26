@@ -1,12 +1,10 @@
-{% extends "learning_logs/base.html" %}
 <!DOCTYPE html>
+{% extends "learning_logs/base.html" %}
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anotações</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/css/navegaçao.css' %}">
 </head>
 <body>
     {% block header %}
@@ -32,5 +30,6 @@
             </h2>
         {% endif %}
     {% endblock content %}
+
 </body>
 </html>
