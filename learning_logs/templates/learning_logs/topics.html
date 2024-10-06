@@ -15,11 +15,19 @@
             {% for topic in topics %}
                 <li>
                     <h3>
-                        <a href="{% url 'topic' topic.id %}">{{ topic }}</a>
+                        <a href="{% url 'topic' topic.id %}">{{ topic }}</a>                      
                     </h3>
+                        <div class="btnt">
+                            <form action="{% url 'delete_topic' topic.id %}" method="post"> 
+                                {% csrf_token %}                       
+                                <button type="submit" class="btn btn-primary">
+                                    Deletar
+                                </button>
+                            </form>
+                        </div>
                 </li>
             {% empty %}
-                <li>Não há topicos adicionados.</li>
+                <h3>Não há topicos adicionados.</h3>
             {% endfor %}
         </ul>
         <h3>

@@ -13,11 +13,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env()
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'True'
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+DEBUG = True
+# key for configuration
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+# DEBUG = os.environ.get('DEBUG', 'True').lower() == 'True'
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+SECRET_KEY = 'e4@^mu1cfk6&ed(1bsnxy6c0%j&k^$^(kh5d%xka#gn90wc_@-'
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -75,9 +77,10 @@ DATABASES = {
 
 # Render PostergreSQL database (live)
 
+'''
 database_url = os.environ.get("DATABASE_URL")
 DATABASES["default"] = dj_database_url.parse(database_url)
-
+'''
 # Password validation
 
 AUTH_PASSWORD_VALIDATORS = [

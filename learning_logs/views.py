@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'learning_logs/index.html')
 
 
-@login_required
+@login_required 
 def topics(request):
     """Mostra todos os assuntos"""
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')
@@ -90,11 +90,19 @@ def edit_entry(request, entry_id):
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
 
+
 def delete_entry(request, entry_id):
     if request.method == 'POST':
+        entry = Entry.objects.get(id=entry_id)
         Entry.objects.get(id=entry_id).delete()
-        return HttpResponseRedirect(reverse('topics'))
+        topic = entry.topic_id
+        return HttpResponseRedirect(f'/topics/{topic}')
     raise Http404
 
 
+def delete_topic(request, topic_id):
+    if request.method == 'POST':
+        Topic.objects.get(id=topic_id).delete()
+        return HttpResponseRedirect('/topics')
+    raise Http404
 

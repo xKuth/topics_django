@@ -18,16 +18,13 @@
                 <div class="form-group">
                     {% csrf_token %}
                     {% if error %}
-                    <p style="background-color: red;">O usuario ou a senha esta incorreto</p> 
+                        <p style="background-color: red;">O Úsuario ou a senha estão incorreto(s)</p> 
                     {% else %}
-                    {{ form }}
+                        {{ form }}
                 </div>
-                    <button name="submit" class="btn btn-primary">Entrar</button>
+                        <button name="submit" class="btn btn-primary">Entrar</button>
                     {% endif %}  
-            </form>     
-            {% buttons %}
-            {% endbuttons %}
-            <input type="hidden" name="next" value="{% url 'index' %}">
+            </form>        
         </form>
         {% endblock content %}
 </body>

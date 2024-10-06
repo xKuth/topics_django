@@ -10,4 +10,5 @@ urlpatterns = [
     path('new_entry/<topic_id>/', views.new_entry, name='new_entry'),
     path('edit_entry/<entry_id>/', views.edit_entry, name='edit_entry'),
     path('delete/<entry_id>/', views.delete_entry, name='delete_entry'),
-]
+    path('delete_topic/<topic_id>/', views.delete_topic, name='delete_topic'),
+] 

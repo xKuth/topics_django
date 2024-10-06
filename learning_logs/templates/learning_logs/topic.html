@@ -27,7 +27,7 @@
                                     <a href="{% url 'edit_entry' entry.id %}">Editar anotação</a>
                                 </small>
                                 <div class="btnt">
-                                    <form action="{% url 'delete_entry' entry.id %}" method="post">
+                                    <form action="{% url 'delete_entry' entry.id%}" method="post">
                                         {% csrf_token %}
                                     <small>
                                         {% buttons %}

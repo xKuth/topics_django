@@ -17,13 +17,9 @@ i{
 .switch{
     color: white;
 }
-
-
-.colrr{ 
-    color: green;
-    font-size: 100px;
+form.toto{
+    text-align: center;
 }
-
 div.panel-heading.color, div.color{
     background-color: rgba(245, 222, 179, 0.658);
 }
@@ -33,6 +29,14 @@ div.btnt{
     margin-right: 5%;
 }
 
+/* Configuração forms */
+label{
+    font-size: 1.5em;
+    display: block;
+}
+.boxexinput{
+    border-radius: 10%;
+}
 
 @media (max-width: 768px) {
     div.navbar-header{
