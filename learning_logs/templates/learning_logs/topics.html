@@ -13,19 +13,27 @@
     {% block content %}
         <ul>
             {% for topic in topics %}
-                <li>
-                    <h3>
-                        <a href="{% url 'topic' topic.id %}">{{ topic }}</a>                      
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 style="display: inline;">
+                        <a href="{% url 'topic' topic.id %}">{{ topic|truncatechars:"30" }}</a>                      
                     </h3>
-                        <div class="btnt">
-                            <form action="{% url 'delete_topic' topic.id %}" method="post"> 
-                                {% csrf_token %}                       
-                                <button type="submit" class="btn btn-primary">
-                                    Deletar
-                                </button>
-                            </form>
-                        </div>
-                </li>
+                    <small class="space-a" style="display: inline;">
+                        <a href="{% url 'edit_topic' topic.id %}">
+                            editar tópico
+                        </a>
+                    </small>
+                    <div class="btnt">
+                        <form action="{% url 'delete_topic' topic.id %}" method="post" style="display: inline;"> 
+                            {% csrf_token %}                       
+                            <button type="submit" class="btn btn-primary">
+                                Deletar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                
             {% empty %}
                 <h3>Não há topicos adicionados.</h3>
             {% endfor %}

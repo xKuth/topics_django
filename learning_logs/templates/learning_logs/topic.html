@@ -14,20 +14,20 @@
 
     {%block content%}
         <p>
-            <a href="{% url 'new_entry'  topic.id %}">
+            <a href="{% url 'new_entry'  topic.id %}"> <!-- Envia uma solicitação para adicionar uma nova entrada. -->
                 Adicione uma nova anotação
             </a>
         </p>
             {% for entry in entries%}
                     <div class="panel panel-default">
                         <div class="panel-heading color">
-                            <h3>
+                            <h3><!-- Adiciona data e as horas que a entrada foi criada. -->
                                 {{ entry.date_added | date:'M d, Y H:i'}}
-                                <small>
-                                    <a href="{% url 'edit_entry' entry.id %}">Editar anotação</a>
+                                <small class="space-a">
+                                    <a href="{% url 'edit_entry' entry.id %}">Editar anotação</a><!-- Envia uma solicitação para modificar uma entrada. -->
                                 </small>
                                 <div class="btnt">
-                                    <form action="{% url 'delete_entry' entry.id%}" method="post">
+                                    <form action="{% url 'delete_entry' entry.id%}" method="post"><!-- Envia uma solicitação para deletar uma entrada. -->
                                         {% csrf_token %}
                                     <small>
                                         {% buttons %}
@@ -39,11 +39,11 @@
                             </h3>  
                         </div>
                         <div class="panel-body">
-                            {{ entry.text | linebreaks }}
+                            {{ entry.text | linebreaks|truncatechars:"80" }} <!-- Adiciona o texto da entrada a pagina. -->
                         </div>
                     </div>
             {%empty%}
-                <p class="switch">Não há registro.</p>
+                <p class="switch">Não há registro.</p> <!-- Aparece quando não a uma entrada ja criada.  -->
             {% endfor %}
     {% endblock content %}
 </body>

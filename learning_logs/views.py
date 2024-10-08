@@ -91,6 +91,23 @@ def edit_entry(request, entry_id):
     return render(request, 'learning_logs/edit_entry.html', context)
 
 
+def edit_topic(request, topic_id):
+    id = Topic.objects.get(id=topic_id)
+    topic = Topic.objects.get(text=id)
+    if request.method != 'POST':
+       form = TopicForm(instance=topic)
+    if request.method == 'POST':
+        form = TopicForm(instance=topic, data=request.POST)
+        form.is_valid()
+        form.save()
+        return HttpResponseRedirect(reverse('topics'))
+    context = {'topic': topic, 'form': form}
+    return render(request, 'learning_logs/edit_topic.html', context)
+
+
+
+
+@login_required
 def delete_entry(request, entry_id):
     if request.method == 'POST':
         entry = Entry.objects.get(id=entry_id)
@@ -99,7 +116,7 @@ def delete_entry(request, entry_id):
         return HttpResponseRedirect(f'/topics/{topic}')
     raise Http404
 
-
+@login_required
 def delete_topic(request, topic_id):
     if request.method == 'POST':
         Topic.objects.get(id=topic_id).delete()

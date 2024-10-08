@@ -6,6 +6,7 @@ body{
     background-color: black;
     
 }
+
 i{
     margin-right: 2px;
     margin-left: 5px;
@@ -36,6 +37,10 @@ label{
 }
 .boxexinput{
     border-radius: 10%;
+}
+
+.space-a{
+    padding-left: 2%;
 }
 
 @media (max-width: 768px) {
