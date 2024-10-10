@@ -17,11 +17,11 @@
             <form action="{% url 'login' %}" method="post" class="ul_none form switch">
                 <div class="form-group">
                     {% csrf_token %}
-                    {% if error %}
+                    {% if error %} <!-- Caso possua error ele vai imprimir o paragrafo. -->
                         <p style="background-color: red;">O Úsuario ou a senha estão incorreto(s)</p> 
-                    {% else %}
+                    {% else %}<!-- Se não possuir erros ele imprimira o formulario para o usuario. -->
                         {{ form }}
-                </div>
+                </div> 
                         <button name="submit" class="btn btn-primary">Entrar</button>
                     {% endif %}  
             </form>        

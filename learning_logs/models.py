@@ -11,7 +11,7 @@ class Topic(models.Model):
     def __str__(self):
         """Devolve uma representação em string do modelo."""
         return self.text
-
+ 
 class Entry(models.Model):
     """Algo especififco aprendido sobre um assunto"""
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)

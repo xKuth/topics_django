@@ -12,7 +12,7 @@
         <h1 class="switch">Criar conta</h1>
     {% endblock header %}
     {% block content %}
-        {% if error %}
+        {% if error %} <!-- Vai imprimir indicações par preencher o formulario caso ele contenha erros.-->
             <p class="aviso-error" style="color: red;">▪️ O nome do usuario não deve conter caracteres especiais</p>
             <p class="aviso-error" style="color: red;">▪️ A senha deve conter mais de 8 digitos, letras, números, caracteres especiais e não deve conter o nome de usúario.</p>
             <p class="aviso-error" style="color: red;">▪️ As senhas digitadas precisam estar iguais.</p>
@@ -20,14 +20,14 @@
         <form action="{% url 'register' %}" method="post" class="ul_none form switch">
             <div class="form-group">
                 {% csrf_token %}
-                {{form.as_p}}
+                {{form.as_p}} <!-- Vai imprimir um formulario para preenchimento com indicações abaixo.-->
                 
                 <ul>▪️ As senha precisam ter no minimo 8 caracteres.</ul>
                 <ul>▪️ As senha precisam de números e letras.</ul>
                 <ul>▪️ Senhas fortes contem caracteres especiais.</ul>
 
                 {% buttons %}
-                    <button name="submit" class="btn btn-primary">Registrar</button>
+                    <button name="submit" class="btn btn-primary">Registrar</button> 
                 {% endbuttons %}
                 <input type="hidden" name="next" value="{% url 'index' %}">
             </div>

@@ -22,7 +22,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading color">
                             <h3><!-- Adiciona data e as horas que a entrada foi criada. -->
-                                {{ entry.date_added | date:'M d, Y H:i'}}
+                                {{ entry.date_added | date:'d / m / Y H:i'}}
                                 <small class="space-a">
                                     <a href="{% url 'edit_entry' entry.id %}">Editar anotação</a><!-- Envia uma solicitação para modificar uma entrada. -->
                                 </small>
