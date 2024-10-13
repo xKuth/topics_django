@@ -21,7 +21,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('learning_logs.urls')),
-    path('users/', include('users.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('admin/', admin.site.urls), # Url para administrador.
+    path('', include('learning_logs.urls')), # Url para pagina principal.
+    path('users/', include('users.urls')), # Url para úsuario fazer login.
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # Url para localizar arquivos estaticos.
