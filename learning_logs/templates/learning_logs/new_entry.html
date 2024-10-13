@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nova anotação</title>
 </head>
 <body>
-    {% extends "learning_logs/base.html" %}
-    {% load bootstrap3 %}
-    {% block header %}
-        <h1><a href="{% url 'topic' topic.id %}">{{ topic }}</a></h1>
-    {% endblock header %}
-    {% block content %}
+    {% extends "learning_logs/base.html" %} <!-- importando header e centralização. -->
+    {% load bootstrap3 %} <!-- Carregando arquivos bootstrap -->
+    {% block header %} <!-- invocando header para adicinar conteúdo da pagina. -->
+        <h1><a href="{% url 'topic' topic.id %}">{{ topic }}</a></h1> <!-- invocando topico criado no DB e enviado por views. -->
+    {% endblock header %} <!-- Fim de cabeçalho importado -->
+    {% block content %} <!-- invocando centralização de pagina para adicinar conteúdo da pagina. -->
     
     <h3 class="switch">Adicione uma nova entrada:</h3>
-    <form action="{% url 'new_entry' topic.id %}" method="post" class="form">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
-            <button name="submit" class="btn btn-primary">Adicionar</button>
-        {% endbuttons %}
-    </form>
-    {% endblock content %}
+    <form action="{% url 'new_entry' topic.id %}" method="post" class="form"> <!-- Formulario com impressão de texto do DB, de uma nova anotação.  -->
+        {% csrf_token %} <!-- codigo de seguraça para envio de formulario -->
+        {% bootstrap_form form %} <!-- impressão de formulario de forms, com classe bootstrap. -->
+        {% buttons %} <!-- Buttons do bootstrap -->
+            <button name="submit" class="btn btn-primary">Adicionar</button> <!-- botão para envio de formulario. -->
+        {% endbuttons %} <!-- Fim buttons do bootstrap -->
+    </form> <!-- Fim formulario -->
+    {% endblock content %} <!-- Fim da centralização de pagina. --> 
     
 </body>
 </html>

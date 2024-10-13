@@ -3,44 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Topicos criados</title>
 </head>
 <body>
-    {% extends "learning_logs/base.html" %}
-    {% block header %}
+    {% extends "learning_logs/base.html" %} <!-- importando header e centralização. -->
+    {% block header %} <!-- invocando header para adicinar conteúdo da pagina. -->
         <h1 class="switch"> Tópicos: </h1>
-    {% endblock header %}
-    {% block content %}
+    {% endblock header %} <!-- Fim de cabeçalho importado -->
+    {% block content %} <!-- invocando centralização de pagina para adicinar conteúdo da pagina. -->
         <ul>
-            {% for topic in topics %}
-            <div class="panel panel-default">
+            {% for topic in topics %} <!-- Condicional para cada topico criado no DB. -->
+            <div class="panel panel-default"> <!-- Div para cada topico criado. -->
                 <div class="panel-heading">
                     <h3 style="display: inline;">
-                        <a href="{% url 'topic' topic.id %}">{{ topic|truncatechars:"30" }}</a>                      
+                        <a href="{% url 'topic' topic.id %}">{{ topic|truncatechars:"30" }}</a> <!-- Adiciona o texto do topico a pagina, com limite de caracters a ser impresso.  -->                 
                     </h3>
                     <small class="space-a" style="display: inline;">
-                        <a href="{% url 'edit_topic' topic.id %}">
+                        <a href="{% url 'edit_topic' topic.id %}"> <!-- Envia uma solicitação para modificar um tópico. -->
                             editar tópico
                         </a>
                     </small>
-                    <div class="btnt">
-                        <form action="{% url 'delete_topic' topic.id %}" method="post" style="display: inline;"> 
-                            {% csrf_token %}                       
-                            <button type="submit" class="btn btn-primary">
+                    <div class="btnt"> <!-- Div para o botão de deletar. -->
+                        <form action="{% url 'delete_topic' topic.id %}" method="post" style="display: inline;"> <!-- Envia uma solicitação para deletar uma Tópico. -->
+                            {% csrf_token %} <!-- codigo de seguraça para envio de formulario -->              
+                            <button type="submit" class="btn btn-primary"> <!-- botão para envio de solicitação de deletar. -->
                                 Deletar
                             </button>
-                        </form>
-                    </div>
+                        </form> <!-- Fim formulario -->
+                    </div><!-- Fim div para deletar. -->
                 </div>
-            </div>
-                
-            {% empty %}
+            </div><!-- Fim div para cada tópico criado. -->   
+            {% empty %} <!-- Condicional para se não existir tópicos. -->
                 <h3>Não há topicos adicionados.</h3>
-            {% endfor %}
+            {% endfor %} <!-- Fim de condicional para cada topico criado no DB. -->
         </ul>
         <h3>
-            <a href="{% url 'new_topic' %}">Adicionar novos tópicos</a>
+            <a href="{% url 'new_topic' %}">Adicionar novos tópicos</a> <!-- Envia uma solicitação para adicionar uma novo tópico. -->
         </h3>
-    {%endblock content %}
+    {%endblock content %} <!-- Fim da centralização de pagina. -->
 </body>
 </html>

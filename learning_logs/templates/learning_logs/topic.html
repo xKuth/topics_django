@@ -3,48 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Anotações criadas </title>
 </head>
 <body>
-    {% extends "learning_logs/base.html" %}
-    {% load bootstrap3 %}
-    {% block header %}
+    {% extends "learning_logs/base.html" %} <!-- importando header e centralização. -->
+    {% load bootstrap3 %} <!-- Carregando arquivos bootstrap -->
+    {% block header %} <!-- invocando header para adicinar conteúdo da pagina. -->
         <h2 class="switch">{{ topic }}</h2>
-    {% endblock header %}
+    {% endblock header %} <!-- Fim de cabeçalho importado -->
 
-    {%block content%}
+    {%block content%} <!-- invocando centralização de pagina para adicinar conteúdo da pagina. -->
         <p>
             <a href="{% url 'new_entry'  topic.id %}"> <!-- Envia uma solicitação para adicionar uma nova entrada. -->
                 Adicione uma nova anotação
             </a>
         </p>
-            {% for entry in entries%}
-                    <div class="panel panel-default">
+            {% for entry in entries%} <!-- Condicional para cada topico criado no DB. -->
+                    <div class="panel panel-default"><!-- Div para cada topico criado. -->
                         <div class="panel-heading color">
                             <h3><!-- Adiciona data e as horas que a entrada foi criada. -->
                                 {{ entry.date_added | date:'d / m / Y H:i'}}
                                 <small class="space-a">
-                                    <a href="{% url 'edit_entry' entry.id %}">Editar anotação</a><!-- Envia uma solicitação para modificar uma entrada. -->
+                                    <a href="{% url 'edit_entry' entry.id %}">Editar anotação</a> <!-- Envia uma solicitação para modificar uma entrada. -->
                                 </small>
-                                <div class="btnt">
-                                    <form action="{% url 'delete_entry' entry.id%}" method="post"><!-- Envia uma solicitação para deletar uma entrada. -->
-                                        {% csrf_token %}
+                                <div class="btnt"> <!-- Div para botão de deletar -->
+                                    <form action="{% url 'delete_entry' entry.id%}" method="post"> <!-- Envia uma solicitação para deletar uma entrada. -->
+                                        {% csrf_token %} <!-- codigo de seguraça para envio de formulario -->
                                     <small>
-                                        {% buttons %}
-                                            <button type="submit" class="btn btn-primary">Apagar</button>
-                                        {% endbuttons %}
+                                        {% buttons %} <!-- Buttons do bootstrap -->
+                                            <button type="submit" class="btn btn-primary">Apagar</button> <!-- botão para envio de formulario. -->
+                                        {% endbuttons %} <!-- Fim buttons do bootstrap -->
                                     </small>
-                                    </form>
-                                </div>
+                                    </form> <!-- Fim formulario -->
+                                </div> <!-- Fim div para botão deletar. -->
                             </h3>  
                         </div>
                         <div class="panel-body">
-                            {{ entry.text | linebreaks|truncatechars:"80" }} <!-- Adiciona o texto da entrada a pagina. -->
+                            {{ entry.text | linebreaks|truncatechars:"80" }} <!-- Adiciona o texto da entrada a pagina, com limite de caracters a ser impresso.  -->
                         </div>
-                    </div>
-            {%empty%}
+                    </div><!-- Fim div para cada tópico criado. -->
+            {%empty%} <!-- Condicional para se não exiter tópicos. -->
                 <p class="switch">Não há registro.</p> <!-- Aparece quando não a uma entrada ja criada.  -->
-            {% endfor %}
-    {% endblock content %}
+            {% endfor %} <!-- Fim de condicional para cada topico criado no DB. -->
+    {% endblock content %} <!-- Fim da centralização de pagina. --> 
 </body>
 </html>
